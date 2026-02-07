@@ -21,11 +21,13 @@
       method="POST"
       data-netlify="true"
       name="contact"
-      action="/success"
       class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8"
     >
       <!-- Hidden Netlify form name -->
       <input type="hidden" name="form-name" value="contact" />
+      
+      <!-- Success redirect URL for Netlify Forms -->
+      <input type="hidden" name="_next" value="/success" />
       
       <!-- Honeypot field (hidden, for spam detection) -->
       <input type="text" name="url-field" style="display:none" tabindex="-1" autocomplete="off" />
