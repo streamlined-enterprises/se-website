@@ -1,0 +1,109 @@
+---
+// Contact Section Component with Netlify Forms
+---
+
+<section id="contact" class="py-20 md:py-32 bg-slate-900/30">
+  <div class="max-w-2xl mx-auto px-4 md:px-6">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
+        Let's Talk
+      </h2>
+      <p class="text-slate-400 text-lg">
+        Schedule a consultation to discuss how strategic technology leadership can accelerate your business objectives.
+      </p>
+    </div>
+    
+    <!-- Contact Form -->
+    <!-- Netlify form configuration: method="POST", data-netlify="true", name="contact" -->
+    <!-- Honeypot field for spam prevention: name="url-field" -->
+    <form
+      method="POST"
+      data-netlify="true"
+      name="contact"
+      netlify-honeypot="url-field"
+      class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8"
+    >
+      <!-- Hidden Netlify form name -->
+      <input type="hidden" name="form-name" value="contact" />
+      
+      <!-- Honeypot field (hidden, for spam detection) -->
+      <input type="text" name="url-field" style="display:none" tabindex="-1" autocomplete="off" />
+      
+      <!-- Form Fields -->
+      <div class="space-y-6">
+        <!-- Name Field -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
+            placeholder="Your name"
+          />
+        </div>
+        
+        <!-- Email Field -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
+            placeholder="you@company.com"
+          />
+        </div>
+        
+        <!-- Company Field -->
+        <div>
+          <label for="company" class="block text-sm font-medium text-slate-300 mb-2">
+            Company (Optional)
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
+            placeholder="Your company"
+          />
+        </div>
+        
+        <!-- Message Field -->
+        <div>
+          <label for="message" class="block text-sm font-medium text-slate-300 mb-2">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none resize-none"
+            placeholder="Tell me about your project or challenge..."
+          ></textarea>
+        </div>
+        
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-teal-500/50 transition-all duration-300 hover:-translate-y-1 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+        >
+          Send Message
+        </button>
+        
+        <!-- Privacy Note -->
+        <p class="text-xs text-slate-500 text-center mt-4">
+          Your information is secure and will never be shared with third parties.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>

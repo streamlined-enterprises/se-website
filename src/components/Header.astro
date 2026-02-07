@@ -1,0 +1,128 @@
+---
+// Header Component with Navigation
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 h-16 md:h-20">
+  <div class="h-full backdrop-blur-md bg-slate-950/80 border-b border-slate-800/50 supports-[backdrop-filter]:bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-full">
+      <div class="flex items-center justify-between h-full">
+        <!-- Logo -->
+        <a href="#" class="text-xl font-bold text-slate-100 hover:text-teal-400 transition-colors">
+          Streamlined Enterprises
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+          <a href="#services" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
+            Services
+          </a>
+          <a href="#expertise" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
+            Expertise
+          </a>
+          <a href="#contact" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
+            Contact
+          </a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-toggle"
+          type="button"
+          class="md:hidden p-2 text-slate-300 hover:text-teal-400 transition-colors"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation Overlay -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-slate-950/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 md:hidden"
+    aria-hidden="true"
+  >
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <a href="#services" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
+        Services
+      </a>
+      <a href="#expertise" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
+        Expertise
+      </a>
+      <a href="#contact" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
+        Contact
+      </a>
+      <button
+        id="mobile-menu-close"
+        type="button"
+        class="absolute top-4 right-4 p-2 text-slate-300 hover:text-teal-400 transition-colors"
+        aria-label="Close mobile menu"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  function openMobileMenu() {
+    mobileMenu?.classList.remove('translate-x-full');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    mobileMenuToggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeMobileMenu() {
+    mobileMenu?.classList.add('translate-x-full');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    mobileMenuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  
+  mobileMenuToggle?.addEventListener('click', openMobileMenu);
+  mobileMenuClose?.addEventListener('click', closeMobileMenu);
+  
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+  
+  // Active section highlighting
+  const sections = document.querySelectorAll('section[id]');
+  
+  function highlightActiveSection() {
+    const scrollPosition = window.scrollY + 100;
+    
+    sections.forEach(section => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = section.clientHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');
+        navLinks.forEach(link => {
+          link.classList.remove('text-teal-400');
+          link.classList.add('text-slate-300');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('text-teal-400');
+            link.classList.remove('text-slate-300');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', highlightActiveSection);
+  highlightActiveSection();
+</script>

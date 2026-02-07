@@ -1,0 +1,145 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Streamlined Enterprises LLC | Enterprise Technology Consulting - AI Strategy, Security, Cloud Infrastructure",
+  description = "Strategic technology consulting for enterprises and growth-stage companies. 20+ years expertise in AI governance, security compliance (PCI/SOC), and cloud transformation. Zero-breach track record.",
+  canonicalURL = "https://streamlinedenterprises.com"
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Streamlined Enterprises LLC",
+  "description": "Enterprise technology consulting specializing in AI strategy, security compliance, and cloud infrastructure transformation.",
+  "url": "https://streamlinedenterprises.com",
+  "priceRange": "$$$",
+  "areaServed": {
+    "@type": "Place",
+    "name": "United States"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-913-555-0123",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  },
+  "founder": {
+    "@type": "Person",
+    "jobTitle": "Principal Consultant"
+  }
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="AI strategy, security consulting, cloud infrastructure, FinTech, PCI compliance, SOC audit, CTO services, enterprise technology, digital transformation" />
+    <meta name="author" content="Streamlined Enterprises LLC" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://streamlinedenterprises.com/og-image.jpg" />
+    <meta property="og:site_name" content="Streamlined Enterprises LLC" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="https://streamlinedenterprises.com/og-image.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
+    <!-- Skip to main content for accessibility -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #14B8A6;
+        color: #0f172a;
+        padding: 8px 16px;
+        z-index: 100;
+        transition: top 0.3s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans antialiased">
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Radial gradient background overlay -->
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 pointer-events-none z-0"></div>
+    
+    <!-- Main content -->
+    <main id="main-content" class="relative z-10">
+      <slot />
+    </main>
+    
+    <!-- Footer is included in the page -->
+  </body>
+</html>
+
+<style is:global>
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background: #14B8A6;
+    color: #0f172a;
+  }
+  
+  /* Focus visible styles */
+  :focus-visible {
+    outline: 2px solid #14B8A6;
+    outline-offset: 2px;
+  }
+</style>
