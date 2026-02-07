@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Message Sent | Streamlined Enterprises LLC">
+  <Header />
+  <main class="min-h-screen flex items-center justify-center pt-16">
+    <div class="max-w-lg mx-auto px-4 text-center">
+      <div class="w-16 h-16 bg-teal-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-3xl font-bold text-slate-100 mb-4">Message Sent</h1>
+      <p class="text-slate-400 mb-8">
+        Thank you for reaching out. We'll review your inquiry and get back to you shortly.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold px-6 py-3 rounded-lg transition-colors"
+      >
+        Return to Homepage
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
