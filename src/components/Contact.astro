@@ -19,14 +19,13 @@
     <!-- Honeypot field for spam prevention: name="url-field" -->
     <form
       method="POST"
-      action="/success"
+      action="/success.html"
       data-netlify="true"
       netlify-honeypot="url-field"
       name="contact"
       class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8"
     >
-      <!-- Hidden Netlify form name -->
-      <input type="hidden" name="form-name" value="contact" />
+      <!-- Netlify automatically injects the form-name input during build -->
       
       <!-- Honeypot field (hidden, for spam detection) -->
       <input type="text" name="url-field" style="display:none" tabindex="-1" autocomplete="off" />
