@@ -10,8 +10,8 @@
       This hidden file ensures Netlify Forms detects the contact form schema correctly.
       It mirrors the form structure from src/components/Contact.astro.
     -->
-    <form name="contact" data-netlify="true" action="/success" hidden>
-        <input type="hidden" name="form-name" value="contact" />
+    <form name="contact-submission" method="POST" data-netlify="true" action="/success" hidden>
+        <input type="hidden" name="form-name" value="contact-submission" />
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="text" name="company" />
