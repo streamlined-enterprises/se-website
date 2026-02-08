@@ -9,8 +9,9 @@
     <!-- 
       This hidden file ensures Netlify Forms detects the contact form schema correctly.
       It mirrors the form structure from src/components/Contact.astro.
+      Matched to use explicit .html extension.
     -->
-    <form name="contact-submission" netlify netlify-honeypot="url-field" action="/success" hidden>
+    <form name="contact" data-netlify="true" netlify-honeypot="url-field" action="/success.html" hidden>
         <input type="text" name="url-field" />
         <input type="text" name="name" />
         <input type="email" name="email" />
