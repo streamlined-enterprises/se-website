@@ -6,6 +6,6 @@ export default defineConfig({
   output: 'static',
   site: 'https://streamlinedenterprises.com',
   build: {
-    format: 'directory'
+    format: 'file'
   }
 });
