@@ -9,13 +9,16 @@
     <!-- 
       This hidden file ensures Netlify Forms detects the contact form schema correctly.
       It mirrors the form structure from src/components/Contact.astro.
+      Using CSS display:none instead of hidden attribute to ensure bot detection.
     -->
-    <form name="contact-submission" method="POST" data-netlify="true" action="/success" hidden>
-        <input type="hidden" name="form-name" value="contact-submission" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="company" />
-        <textarea name="message"></textarea>
-    </form>
+    <div style="display:none">
+        <form name="contact-submission" method="POST" data-netlify="true" netlify enctype="application/x-www-form-urlencoded" action="/success">
+            <input type="hidden" name="form-name" value="contact-submission" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="text" name="company" />
+            <textarea name="message"></textarea>
+        </form>
+    </div>
 </body>
 </html>
