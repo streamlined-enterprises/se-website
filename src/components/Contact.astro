@@ -1,5 +1,5 @@
 ---
-// Contact Section Component with Netlify Forms
+// Contact Section Component with Web3Forms
 ---
 
 <section id="contact" class="py-20 md:py-32 bg-slate-900/30">
@@ -15,15 +15,14 @@
     </div>
     
     <!-- Contact Form -->
-    <!-- Netlify form configuration: method="POST", data-netlify="true", name="contact-submission" -->
     <form
       method="POST"
-      data-netlify="true"
-      name="contact-submission"
+      action="https://api.web3forms.com/submit"
       class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8"
     >
-      <!-- Required for Netlify Forms in Astro/SSG -->
-      <input type="hidden" name="form-name" value="contact-submission" />
+      <!-- Web3Forms Configuration -->
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE" />
+      <input type="hidden" name="redirect" value="https://streamline.it.com/success" />
       
       <!-- Form Fields -->
       <div class="space-y-6">
