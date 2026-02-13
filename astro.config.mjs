@@ -4,8 +4,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  site: 'https://streamlinedenterprises.com',
+  site: 'https://streamline.it.com',
   build: {
-    format: 'file'
+    format: 'directory'
   }
 });
