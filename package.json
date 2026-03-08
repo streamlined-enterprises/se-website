@@ -2,7 +2,7 @@
   "name": "streamlined-enterprises-website",
   "type": "module",
   "version": "1.0.0",
-  "description": "Enterprise technology consulting website for Streamlined Enterprises LLC",
+  "description": "Enterprise technology consulting website for Streamline IT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

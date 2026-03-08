@@ -1,4 +1,4 @@
-# Streamlined Enterprises LLC
+# Streamline IT
 
 **Core Expertise Areas:**
 - AI Strategy & Governance
