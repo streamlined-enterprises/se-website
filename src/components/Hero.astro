@@ -1,21 +1,20 @@
 ---
 // Hero Section Component
+import { site } from '../data/site.ts';
 ---
 
 <section id="hero" class="min-h-screen flex items-center justify-center relative pt-16 md:pt-20">
   <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
     <!-- Eyebrow -->
     <p class="text-sm uppercase tracking-wide text-teal-400 mb-4 animate-fade-in">
-      Streamlined Enterprises LLC
+      {site.legalName}
     </p>
     
     <!-- Main Headline -->
     <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight -tracking-tight mb-6 animate-slide-up">
-      <span class="bg-gradient-to-r from-teal-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
-        Enterprise Technology Leadership
-      </span>
+      <span class="text-slate-100">{site.tagline}</span>
       <br />
-      <span class="text-slate-100">When You Need It</span>
+      <span class="text-teal-400">{site.taglineSub}</span>
     </h1>
     
     <!-- Subheadline -->

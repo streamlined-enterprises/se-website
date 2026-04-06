@@ -1,5 +1,6 @@
 ---
 // Header Component with Navigation
+import { site } from '../data/site.ts';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 h-16 md:h-20">
@@ -7,21 +8,21 @@
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-full">
       <div class="flex items-center justify-between h-full">
         <!-- Logo -->
-        <a href="#" class="text-xl font-bold text-slate-100 hover:text-teal-400 transition-colors">
-          Streamlined Enterprises
+        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="Streamline IT — home">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M6 8 L16 16 L6 24" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 8 L24 16 L14 24" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          </svg>
+          <span class="text-lg font-semibold text-slate-100">{site.name}</span>
         </a>
         
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
-          <a href="#services" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
-            Services
-          </a>
-          <a href="#expertise" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
-            Expertise
-          </a>
-          <a href="#contact" class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
-            Contact
-          </a>
+          {site.nav.map(item => (
+            <a href={item.href} class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
+              {item.label}
+            </a>
+          ))}
         </nav>
         
         <!-- Mobile Menu Button -->
@@ -47,15 +48,11 @@
     aria-hidden="true"
   >
     <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="#services" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
-        Services
-      </a>
-      <a href="#expertise" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
-        Expertise
-      </a>
-      <a href="#contact" class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
-        Contact
-      </a>
+      {site.nav.map(item => (
+        <a href={item.href} class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
+          {item.label}
+        </a>
+      ))}
       <button
         id="mobile-menu-close"
         type="button"

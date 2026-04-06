@@ -1,4 +1,6 @@
 ---
+import { site } from '../data/site.ts';
+
 interface Props {
   title?: string;
   description?: string;
@@ -6,17 +8,17 @@ interface Props {
 }
 
 const {
-  title = "Streamlined Enterprises LLC | Secure AI, Cloud, and Engineering Consulting",
-  description = "Strategic consulting for enterprises and growth-stage companies. 22+ years expertise in secure AI adoption, risk-based security, and reliable cloud platforms. Zero-breach track record.",
-  canonicalURL = "https://streamlinedenterprises.com"
+  title = `${site.legalName} | ${site.tagline}`,
+  description = site.description,
+  canonicalURL = site.canonicalURL
 } = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Streamlined Enterprises LLC",
+  "name": site.legalName,
   "description": "Secure AI, cloud, and engineering consulting specializing in AI enablement under compliance constraints.",
-  "url": "https://streamlinedenterprises.com",
+  "url": site.canonicalURL,
   "priceRange": "$$$",
   "areaServed": {
     "@type": "Place",
@@ -24,7 +26,7 @@ const structuredData = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+1-913-555-0123",
+    "telephone": null,
     "contactType": "technical support",
     "availableLanguage": "English"
   },
@@ -58,15 +60,15 @@ const structuredData = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://streamlinedenterprises.com/og-image.jpg" />
-    <meta property="og:site_name" content="Streamlined Enterprises LLC" />
+    <meta property="og:image" content={`${site.canonicalURL}/og-image.jpg`} />
+    <meta property="og:site_name" content={site.legalName} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="https://streamlinedenterprises.com/og-image.jpg" />
+    <meta property="twitter:image" content={`${site.canonicalURL}/og-image.jpg`} />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
