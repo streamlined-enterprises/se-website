@@ -1,4 +1,6 @@
 ---
+import { site } from '../data/site.ts';
+
 interface Props {
   title?: string;
   description?: string;
@@ -6,17 +8,17 @@ interface Props {
 }
 
 const {
-  title = "Streamline IT | Secure AI, Cloud, and Engineering Consulting",
-  description = "Strategic consulting for enterprises and growth-stage companies. 22+ years expertise in secure AI adoption, risk-based security, and reliable cloud platforms. Zero-breach track record.",
-  canonicalURL = "https://streamlinedenterprises.com"
+  title = `${site.name} | Secure AI, Cloud, and Engineering Consulting`,
+  description = site.description,
+  canonicalURL = site.canonicalURL
 } = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Streamline IT",
+  "name": site.name,
   "description": "Secure AI, cloud, and engineering consulting specializing in AI enablement under compliance constraints.",
-  "url": "https://streamlinedenterprises.com",
+  "url": site.canonicalURL,
   "priceRange": "$$$",
   "areaServed": {
     "@type": "Place",
@@ -24,7 +26,7 @@ const structuredData = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+1-913-555-0123",
+    "email": site.email,
     "contactType": "technical support",
     "availableLanguage": "English"
   },
