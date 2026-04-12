@@ -1,103 +1,58 @@
----
-import { site } from '../data/site.ts';
----
-
 <section id="contact" class="py-20 md:py-32 bg-slate-900/30">
-  <div class="max-w-2xl mx-auto px-4 md:px-6">
+  <div class="max-w-3xl mx-auto px-4 md:px-6">
     <!-- Section Header -->
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-slate-100 mb-4">
-        Discuss a Pilot
+        Schedule a Consultation
       </h2>
       <p class="text-slate-400 text-lg">
-        Book a 30-minute consult to explore how AI enablement under compliance constraints can accelerate your business objectives.
+        Book a 30-minute strategy call to explore how we can help you navigate AI adoption, security, and infrastructure challenges.
       </p>
     </div>
-    
-    <!-- Contact Form -->
-    <form
-      method="POST"
-      action="https://api.web3forms.com/submit"
-      class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8"
-    >
-      <!-- Web3Forms Configuration -->
-      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
-      <input type="hidden" name="redirect" value={`${site.canonicalURL}/success`} />
-      
-      <!-- Form Fields -->
-      <div class="space-y-6">
-        <!-- Name Field -->
-        <div>
-          <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
-            placeholder="Your name"
-          />
-        </div>
-        
-        <!-- Email Field -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
-            placeholder="you@company.com"
-          />
-        </div>
-        
-        <!-- Company Field -->
-        <div>
-          <label for="company" class="block text-sm font-medium text-slate-300 mb-2">
-            Company (Optional)
-          </label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none"
-            placeholder="Your company"
-          />
-        </div>
-        
-        <!-- Message Field -->
-        <div>
-          <label for="message" class="block text-sm font-medium text-slate-300 mb-2">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows="5"
-            required
-            class="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-lg text-slate-100 placeholder-slate-500 transition-colors outline-none resize-none"
-            placeholder="Tell me about your project or challenge..."
-          ></textarea>
-        </div>
-        
-        <!-- Submit Button -->
-        <button
-          type="submit"
-          class="w-full bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-teal-500/50 transition-all duration-300 hover:-translate-y-1 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-        >
-          Book a 30-minute consult
-        </button>
-        
-        <!-- Privacy Note -->
-        <p class="text-xs text-slate-500 text-center mt-4">
-          Your information is secure and will never be shared with third parties.
-        </p>
-      </div>
-    </form>
+
+    <!-- Cal.com Inline Embed -->
+    <div class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden">
+      <div id="cal-inline" style="min-height: 600px; width: 100%;"></div>
+    </div>
   </div>
 </section>
+
+<!-- Cal.com Embed Script -->
+<script>
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === "string") {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ["initNamespace", namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", { origin: "https://cal.com" });
+
+  Cal("inline", {
+    elementOrSelector: "#cal-inline",
+    calLink: "ty-stackhouse",
+    config: {
+      theme: "dark",
+    },
+  });
+</script>
