@@ -1,0 +1,60 @@
+name: Branch Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build with preview base path
+        run: npm run build -- --base /previews/pr-${{ github.event.number }}/
+
+      - name: Deploy preview
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          target-folder: previews/pr-${{ github.event.number }}
+          branch: gh-pages
+
+      - name: Comment preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 Preview deployed at: https://streamline.it.com/previews/pr-${{ github.event.number }}/'
+            })
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove preview folder
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git rm -rf previews/pr-${{ github.event.number }} || true
+          git commit -m "Remove preview for PR #${{ github.event.number }}" || true
+          git push
