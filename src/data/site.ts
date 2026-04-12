@@ -35,7 +35,7 @@ export const site = {
   ],
   credibility: [
     { heading: "Thought Leadership", body: "Regular presentations at industry conferences, PCI user sessions, and technology workshops" },
-    { heading: "Team Capabilities", body: "Deep bench of expertise across security, cloud infrastructure, and enterprise AI implementations" },
+    { heading: "Team Capabilities", body: "Senior-level delivery backed by a network of domain specialists" },
     { heading: "Headquarters", body: "Kansas City Metro (serving clients nationwide with remote and hybrid engagement options)" },
   ],
   copyright: new Date().getFullYear(),
