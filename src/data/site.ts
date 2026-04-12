@@ -14,7 +14,6 @@ export const site = {
   email: "contact@streamlinedenterprises.com",
   linkedin: "https://linkedin.com/company/streamlined-enterprises",
   github: "https://github.com/streamlined-enterprises",
-  // Web3Forms key is read from env at build time (import.meta.env.PUBLIC_WEB3FORMS_KEY)
   reportsURL: "", // set when Evidence subdomain is live, e.g. "https://reports.streamline.it.com"
   nav: [
     { label: "Services", href: "#services" },
