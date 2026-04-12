@@ -1,16 +1,20 @@
+---
+import { site } from '../data/site.ts';
+---
+
 <footer class="py-12 border-t border-slate-800 bg-slate-950">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Left Column: Company Info -->
       <div>
         <h3 class="text-lg font-semibold text-slate-100 mb-2">
-          Streamline IT
+          {site.name}
         </h3>
         <p class="text-sm text-slate-400 mb-2">
           Enterprise Technology Consulting
         </p>
         <p class="text-sm text-slate-400">
-          Kansas City Metro
+          {site.location}
         </p>
       </div>
       
@@ -20,15 +24,11 @@
           Quick Links
         </h3>
         <nav class="flex flex-wrap justify-center md:justify-start gap-4">
-          <a href="#services" class="text-sm text-slate-400 hover:text-teal-400 transition-colors">
-            Services
-          </a>
-          <a href="#expertise" class="text-sm text-slate-400 hover:text-teal-400 transition-colors">
-            Expertise
-          </a>
-          <a href="#contact" class="text-sm text-slate-400 hover:text-teal-400 transition-colors">
-            Contact
-          </a>
+          {site.nav.map(item => (
+            <a href={item.href} class="text-sm text-slate-400 hover:text-teal-400 transition-colors">
+              {item.label}
+            </a>
+          ))}
         </nav>
       </div>
       
@@ -40,7 +40,7 @@
         <div class="flex items-center gap-4">
           <!-- LinkedIn -->
           <a
-            href="https://linkedin.com/company/streamlined-enterprises"
+            href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             class="text-slate-400 hover:text-teal-400 transition-colors"
@@ -53,7 +53,7 @@
           
           <!-- GitHub -->
           <a
-            href="https://github.com/streamlined-enterprises"
+            href={site.github}
             target="_blank"
             rel="noopener noreferrer"
             class="text-slate-400 hover:text-teal-400 transition-colors"
@@ -66,7 +66,7 @@
           
           <!-- Email -->
           <a
-            href="mailto:contact@streamlinedenterprises.com"
+            href={`mailto:${site.email}`}
             class="text-slate-400 hover:text-teal-400 transition-colors"
             aria-label="Email Address"
           >
@@ -81,7 +81,7 @@
     <!-- Copyright -->
     <div class="mt-12 pt-8 border-t border-slate-800">
       <p class="text-sm text-slate-500 text-center">
-        &copy; 2026 Streamlined Enterprises LLC. All rights reserved.
+        &copy; {site.copyright} {site.legalName}. All rights reserved.
       </p>
     </div>
   </div>
