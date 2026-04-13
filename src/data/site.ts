@@ -11,8 +11,8 @@ export const site = {
   domain: "streamline.it.com",
   canonicalURL: "https://streamline.it.com",
   location: "Kansas City Metro",
-  email: "contact@streamlinedenterprises.com",
-  linkedin: "https://linkedin.com/company/streamlined-enterprises",
+  email: "sales@streamline.it.com",
+  linkedin: "https://linkedin.com/company/streamlined-enterprises-llc",
   github: "https://github.com/streamlined-enterprises",
   reportsURL: "", // set when Evidence subdomain is live, e.g. "https://reports.streamline.it.com"
   nav: [
