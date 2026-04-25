@@ -1,19 +1,37 @@
+import colors from 'tailwindcss/colors';
+import { theme } from './src/data/theme.ts';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: [theme.fontFamily, 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       colors: {
+        // Semantic tokens — static lookup for Tailwind purge-safe color resolution
         primary: {
-          400: '#2DD4BF',
-          500: '#14B8A6',
+          400: colors[theme.primaryColor][400],
+          500: colors[theme.primaryColor][500],
+          600: colors[theme.primaryColor][600],
         },
-        accent: {
-          400: '#818CF8',
-        }
+        neutral: {
+          50: colors[theme.neutralColor][50],
+          100: colors[theme.neutralColor][100],
+          200: colors[theme.neutralColor][200],
+          300: colors[theme.neutralColor][300],
+          400: colors[theme.neutralColor][400],
+          500: colors[theme.neutralColor][500],
+          600: colors[theme.neutralColor][600],
+          700: colors[theme.neutralColor][700],
+          800: colors[theme.neutralColor][800],
+          900: colors[theme.neutralColor][900],
+          950: colors[theme.neutralColor][950],
+        },
+      },
+      borderRadius: {
+        brand: theme.borderRadius === 'sharp' ? '0px' : theme.borderRadius === 'soft' ? '0.75rem' : '9999px',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

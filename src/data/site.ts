@@ -36,4 +36,22 @@ export const site = {
     { heading: "Headquarters", body: "Kansas City Metro (serving clients nationwide with remote and hybrid engagement options)" },
   ],
   copyright: new Date().getFullYear(),
+
+  // Template copy — edit these for your brand
+  heroEyebrow: "Streamlined Enterprises LLC",
+  heroCopy: "Strategic AI guidance, battle-tested security expertise, and proven infrastructure leadership. We help companies navigate growth, transformation, and complexity with a team that has decades of collective experience.",
+  heroPrimaryCTA: "Schedule a Consultation",
+  heroSecondaryCTA: "View Services",
+  servicesDescription: "Strategic technology leadership for companies at critical inflection points.",
+  expertiseTitle: "Deep Expertise, Proven Results",
+  recentTraining: [
+    "AI Strategy & Governance - Ongoing education in enterprise AI implementation",
+    "Prompt Engineering & LLM Best Practices - Continuous learning in AI technologies",
+  ],
+  technicalFoundation: "Strong engineering backgrounds across the team with degrees in Computer Science and Engineering",
+  contactTitle: "Discuss a Pilot",
+  contactDescription: "Book a 30-minute consult to explore how AI enablement under compliance constraints can accelerate your business objectives.",
+  calLink: "",
+  companyType: "Enterprise Technology Consulting",
+  ogImage: "https://streamline.it.com/og-image.jpg",
 } as const;
