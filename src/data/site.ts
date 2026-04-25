@@ -53,7 +53,7 @@ export const site = {
   technicalFoundation: "Strong engineering backgrounds across the team with degrees in Computer Science and Engineering",
   contactTitle: "Discuss a Pilot",
   contactDescription: "Book a 30-minute consult to explore how AI enablement under compliance constraints can accelerate your business objectives.",
-  calLink: "",
+  calLink: "https://cal.com/ty-stackhouse",
   companyType: "Enterprise Technology Consulting",
   ogImage: "https://streamline.it.com/og-image.jpg",
 } as const;
