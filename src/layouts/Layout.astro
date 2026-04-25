@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site.ts';
+import { theme } from '../data/theme.ts';
 
 interface Props {
   title?: string;
@@ -60,7 +61,7 @@ const structuredData = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${site.canonicalURL}/og-image.jpg`} />
+    <meta property="og:image" content={site.ogImage} />
     <meta property="og:site_name" content={site.legalName} />
     
     <!-- Twitter -->
@@ -68,7 +69,7 @@ const structuredData = {
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={`${site.canonicalURL}/og-image.jpg`} />
+    <meta property="twitter:image" content={site.ogImage} />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -76,7 +77,7 @@ const structuredData = {
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href={theme.fontCDNUrl} rel="stylesheet" />
     
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
@@ -98,12 +99,12 @@ const structuredData = {
       }
     </style>
   </head>
-  <body class="bg-slate-950 text-slate-100 font-sans antialiased">
+  <body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Radial gradient background overlay -->
-    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950 pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-neutral-950 pointer-events-none z-0"></div>
     
     <!-- Main content -->
     <main id="main-content" class="relative z-10">
@@ -121,26 +122,31 @@ const structuredData = {
   }
   
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    /* Sync with neutral-950: #020617 */
+    background: #020617;
   }
   
   ::-webkit-scrollbar-thumb {
+    /* Sync with neutral-700: #334155 */
     background: #334155;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
+    /* Sync with neutral-600: #475569 */
     background: #475569;
   }
   
   /* Selection color */
   ::selection {
+    /* Sync with primary-500: #14B8A6 */
     background: #14B8A6;
-    color: #0f172a;
+    color: #020617;
   }
   
   /* Focus visible styles */
   :focus-visible {
+    /* Sync with primary-500: #14B8A6 */
     outline: 2px solid #14B8A6;
     outline-offset: 2px;
   }

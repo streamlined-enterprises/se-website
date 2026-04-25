@@ -1,25 +1,25 @@
 ---
 // Header Component with Navigation
 import { site } from '../data/site.ts';
+import { theme } from '../data/theme.ts';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 h-16 md:h-20">
-  <div class="h-full backdrop-blur-md bg-slate-950/80 border-b border-slate-800/50 supports-[backdrop-filter]:bg-slate-950/60">
+  <div class="h-full backdrop-blur-md bg-neutral-950/80 border-b border-neutral-800/50 supports-[backdrop-filter]:bg-neutral-950/60">
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-full">
       <div class="flex items-center justify-between h-full">
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="Streamline IT — home">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M6 8 L16 16 L6 24" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 8 L24 16 L14 24" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
-          </svg>
-          <span class="text-lg font-semibold text-slate-100">{site.name}</span>
+        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label={`${site.name} — home`}>
+          <span class="text-primary-500">
+            <Fragment set:html={theme.logoSVG} />
+          </span>
+          <span class="text-lg font-semibold text-neutral-100">{site.name}</span>
         </a>
         
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
           {site.nav.map(item => (
-            <a href={item.href} class="text-slate-300 hover:text-teal-400 transition-colors text-sm font-medium">
+            <a href={item.href} class="text-neutral-300 hover:text-primary-400 transition-colors text-sm font-medium">
               {item.label}
             </a>
           ))}
@@ -29,7 +29,7 @@ import { site } from '../data/site.ts';
         <button
           id="mobile-menu-toggle"
           type="button"
-          class="md:hidden p-2 text-slate-300 hover:text-teal-400 transition-colors"
+          class="md:hidden p-2 text-neutral-300 hover:text-primary-400 transition-colors"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
         >
@@ -44,19 +44,19 @@ import { site } from '../data/site.ts';
   <!-- Mobile Navigation Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-slate-950/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 md:hidden"
+    class="fixed inset-0 bg-neutral-950/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 md:hidden"
     aria-hidden="true"
   >
     <div class="flex flex-col items-center justify-center h-full gap-8">
       {site.nav.map(item => (
-        <a href={item.href} class="text-2xl text-slate-300 hover:text-teal-400 transition-colors mobile-nav-link">
+        <a href={item.href} class="text-2xl text-neutral-300 hover:text-primary-400 transition-colors mobile-nav-link">
           {item.label}
         </a>
       ))}
       <button
         id="mobile-menu-close"
         type="button"
-        class="absolute top-4 right-4 p-2 text-slate-300 hover:text-teal-400 transition-colors"
+        class="absolute top-4 right-4 p-2 text-neutral-300 hover:text-primary-400 transition-colors"
         aria-label="Close mobile menu"
       >
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -109,11 +109,11 @@ import { site } from '../data/site.ts';
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');
         navLinks.forEach(link => {
-          link.classList.remove('text-teal-400');
-          link.classList.add('text-slate-300');
+          link.classList.remove('text-primary-400');
+          link.classList.add('text-neutral-300');
           if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('text-teal-400');
-            link.classList.remove('text-slate-300');
+            link.classList.add('text-primary-400');
+            link.classList.remove('text-neutral-300');
           }
         });
       }
