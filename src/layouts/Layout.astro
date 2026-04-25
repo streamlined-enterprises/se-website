@@ -88,8 +88,8 @@ const structuredData = {
         position: absolute;
         top: -40px;
         left: 0;
-        background: #14B8A6;
-        color: #0f172a;
+        background: theme('colors.primary.500');
+        color: theme('colors.neutral.950');
         padding: 8px 16px;
         z-index: 100;
         transition: top 0.3s;
@@ -123,31 +123,31 @@ const structuredData = {
   
   ::-webkit-scrollbar-track {
     /* Sync with surface token */
-    background: #020617;
+    background: theme('colors.neutral.950');
   }
   
   ::-webkit-scrollbar-thumb {
     /* Sync with border-subtle token */
-    background: #334155;
+    background: theme('colors.neutral.700');
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
     /* Sync with slightly lighter border color */
-    background: #475569;
+    background: theme('colors.neutral.600');
   }
   
   /* Selection color */
   ::selection {
     /* Sync with primary token */
-    background: #14B8A6;
-    color: #020617;
+    background: theme('colors.primary.500');
+    color: theme('colors.neutral.950');
   }
   
   /* Focus visible styles */
   :focus-visible {
     /* Sync with primary token */
-    outline: 2px solid #14B8A6;
+    outline: 2px solid theme('colors.primary.500');
     outline-offset: 2px;
   }
 </style>

@@ -15,7 +15,7 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
 
     <!-- Scroll container -->
     <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4"
-         style="scrollbar-width: thin; scrollbar-color: #334155 #0f172a;">
+         style="scrollbar-width: thin; scrollbar-color: theme('colors.neutral.700') theme('colors.neutral.950')">
       {works.map(work => (
         <a
           href={work.data.url || '#contact'}
