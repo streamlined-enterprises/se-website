@@ -9,8 +9,8 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
 <section class="py-20 md:py-32">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="flex items-end justify-between mb-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-100">Featured Work</h2>
-      <p class="text-slate-400 text-sm hidden md:block">Scroll to explore →</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-content-base">Featured Work</h2>
+      <p class="text-content-muted text-sm hidden md:block">Scroll to explore →</p>
     </div>
 
     <!-- Scroll container -->
@@ -21,7 +21,7 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
           href={work.data.url || '#contact'}
           target={work.data.url ? '_blank' : '_self'}
           rel="noopener noreferrer"
-          class="snap-start flex-shrink-0 w-72 md:w-80 rounded-xl overflow-hidden border border-slate-800 hover:border-teal-500/50 transition-all duration-300 group bg-slate-900/50 backdrop-blur-sm"
+          class="snap-start flex-shrink-0 w-72 md:w-80 rounded-brand overflow-hidden border border-border-subtle hover:border-primary-500/50 transition-all duration-300 group bg-surface/50 backdrop-blur-sm"
         >
           {work.data.image ? (
             <img
@@ -33,19 +33,19 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
               loading="lazy"
             />
           ) : (
-            <div class="w-full h-48 bg-slate-800 flex items-center justify-center">
-              <svg class="w-12 h-12 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div class="w-full h-48 bg-surface flex items-center justify-center">
+              <svg class="w-12 h-12 text-content-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
             </div>
           )}
           <div class="p-5">
-            <h3 class="text-slate-100 font-semibold mb-1 group-hover:text-teal-400 transition-colors">{work.data.title}</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">{work.data.description}</p>
+            <h3 class="text-content-base font-semibold mb-1 group-hover:text-primary-400 transition-colors">{work.data.title}</h3>
+            <p class="text-content-muted text-sm leading-relaxed">{work.data.description}</p>
             {work.data.tags.length > 0 && (
               <div class="flex flex-wrap gap-2 mt-3">
                 {work.data.tags.map(tag => (
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">{tag}</span>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-primary-500/10 text-primary-400 border border-primary-500/20">{tag}</span>
                 ))}
               </div>
             )}

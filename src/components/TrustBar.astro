@@ -9,19 +9,19 @@ const iconMap: Record<string, { path: string }> = {
 };
 ---
 
-<section class="py-8 md:py-12 bg-slate-900/30 border-y border-slate-800/50">
+<section class="py-8 md:py-12 bg-surface/30 border-y border-border-subtle/50">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
       {site.trustStats.map((stat, index) => (
         <>
-          {index > 0 && <div class="hidden md:block w-px h-12 bg-slate-800"></div>}
+          {index > 0 && <div class="hidden md:block w-px h-12 bg-border-subtle"></div>}
           <div class="flex items-center gap-3">
-            <svg class="w-6 h-6 text-teal-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-6 h-6 text-primary-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[stat.icon]?.path || iconMap.clock.path} />
             </svg>
             <div class="text-left">
-              <p class="text-2xl font-bold text-slate-100">{stat.value}</p>
-              <p class="text-sm text-slate-400">{stat.label}</p>
+              <p class="text-2xl font-bold text-content-base">{stat.value}</p>
+              <p class="text-sm text-content-muted">{stat.label}</p>
             </div>
           </div>
         </>

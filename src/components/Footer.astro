@@ -3,30 +3,30 @@
 import { site } from '../data/site.ts';
 ---
 
-<footer class="py-12 border-t border-slate-800 bg-slate-950">
+<footer class="py-12 border-t border-border-subtle bg-neutral-950">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Left Column: Company Info -->
       <div>
-        <h3 class="text-lg font-semibold text-slate-100 mb-2">
+        <h3 class="text-lg font-semibold text-content-base mb-2">
           {site.legalName}
         </h3>
-        <p class="text-sm text-slate-400 mb-2">
-          Enterprise Technology Consulting
+        <p class="text-sm text-content-muted mb-2">
+          {site.companyType}
         </p>
-        <p class="text-sm text-slate-400">
+        <p class="text-sm text-content-muted">
           {site.location}
         </p>
       </div>
       
       <!-- Center Column: Quick Links -->
       <div class="flex flex-col items-center md:items-start">
-        <h3 class="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wide">
+        <h3 class="text-sm font-medium text-content-muted mb-4 uppercase tracking-wide">
           Quick Links
         </h3>
         <nav class="flex flex-wrap justify-center md:justify-start gap-4">
           {site.nav.map(item => (
-            <a href={item.href} class="text-sm text-slate-400 hover:text-teal-400 transition-colors">
+            <a href={item.href} class="text-sm text-content-muted hover:text-primary-400 transition-colors">
               {item.label}
             </a>
           ))}
@@ -35,7 +35,7 @@ import { site } from '../data/site.ts';
       
       <!-- Right Column: Connect -->
       <div class="flex flex-col items-end">
-        <h3 class="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wide">
+        <h3 class="text-sm font-medium text-content-muted mb-4 uppercase tracking-wide">
           Connect
         </h3>
         <div class="flex items-center gap-4">
@@ -44,7 +44,7 @@ import { site } from '../data/site.ts';
             href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-slate-400 hover:text-teal-400 transition-colors"
+            class="text-content-muted hover:text-primary-400 transition-colors"
             aria-label="LinkedIn Profile"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -57,7 +57,7 @@ import { site } from '../data/site.ts';
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-slate-400 hover:text-teal-400 transition-colors"
+            class="text-content-muted hover:text-primary-400 transition-colors"
             aria-label="GitHub Profile"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -68,7 +68,7 @@ import { site } from '../data/site.ts';
           <!-- Email -->
           <a
             href={`mailto:${site.email}`}
-            class="text-slate-400 hover:text-teal-400 transition-colors"
+            class="text-content-muted hover:text-primary-400 transition-colors"
             aria-label="Email Address"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -80,8 +80,8 @@ import { site } from '../data/site.ts';
     </div>
     
     <!-- Copyright -->
-    <div class="mt-12 pt-8 border-t border-slate-800">
-      <p class="text-sm text-slate-500 text-center">
+    <div class="mt-12 pt-8 border-t border-border-subtle">
+      <p class="text-sm text-content-muted text-center">
         © {site.copyright} {site.legalName}. All rights reserved.
       </p>
     </div>

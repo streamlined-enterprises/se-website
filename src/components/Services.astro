@@ -12,6 +12,7 @@ const iconMap: Record<string, string> = {
   cloud: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
   fractional: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
   assessment: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+  default: "M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm6 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 11a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm6 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z",
 };
 
 function renderMarkdown(content: string): string {
@@ -23,11 +24,11 @@ function renderMarkdown(content: string): string {
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-content-base mb-4">
         Services
       </h2>
-      <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
-        Strategic technology leadership for companies at critical inflection points.
+      <p class="text-content-muted text-lg md:text-xl max-w-2xl mx-auto">
+        {site.servicesDescription}
       </p>
     </div>
     
@@ -36,16 +37,16 @@ function renderMarkdown(content: string): string {
       <>
         {/* First featured card: full-width */}
         <div class="grid gap-6 mb-6">
-          <article class="group backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-teal-500/50 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1">
+          <article class="group backdrop-blur-md bg-surface/50 border border-border-subtle rounded-brand p-8 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-1">
             <div class="mb-6">
-              <svg class="w-8 h-8 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[featuredServices[0].data.icon] || iconMap.ai} />
+              <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[featuredServices[0].data.icon] ?? iconMap['default']} />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-slate-100 mb-3 group-hover:text-teal-400 transition-colors">
+            <h3 class="text-xl font-semibold text-content-base mb-3 group-hover:text-primary-400 transition-colors">
               {featuredServices[0].data.title}
             </h3>
-            <p class="text-slate-400 leading-relaxed">
+            <p class="text-content-muted leading-relaxed">
               {renderMarkdown(featuredServices[0].body)}
             </p>
           </article>
@@ -55,16 +56,16 @@ function renderMarkdown(content: string): string {
         {featuredServices.length > 1 && (
           <div class="grid md:grid-cols-2 gap-6 mb-16">
             {featuredServices.slice(1).map(service => (
-              <article class="group backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8 hover:border-teal-500/50 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1">
+              <article class="group backdrop-blur-md bg-surface/50 border border-border-subtle rounded-brand p-8 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-1">
                 <div class="mb-6">
-                  <svg class="w-8 h-8 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[service.data.icon] || iconMap.ai} />
+                  <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[service.data.icon] ?? iconMap['default']} />
                   </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-slate-100 mb-3 group-hover:text-teal-400 transition-colors">
+                <h3 class="text-xl font-semibold text-content-base mb-3 group-hover:text-primary-400 transition-colors">
                   {service.data.title}
                 </h3>
-                <p class="text-slate-400 leading-relaxed">
+                <p class="text-content-muted leading-relaxed">
                   {renderMarkdown(service.body)}
                 </p>
               </article>
@@ -78,11 +79,11 @@ function renderMarkdown(content: string): string {
     {secondaryServices.length > 0 && (
       <div class="grid md:grid-cols-2 gap-6">
         {secondaryServices.map(service => (
-          <article class="backdrop-blur-sm bg-slate-900/30 border border-slate-800 rounded-lg p-6 hover:border-teal-500/30 transition-all duration-300">
-            <h3 class="text-lg font-semibold text-slate-100 mb-2">
+          <article class="backdrop-blur-sm bg-surface/30 border border-border-subtle rounded-brand p-6 hover:border-primary-500/30 transition-all duration-300">
+            <h3 class="text-lg font-semibold text-content-base mb-2">
               {service.data.title}
             </h3>
-            <p class="text-slate-400">
+            <p class="text-content-muted">
               {renderMarkdown(service.body)}
             </p>
           </article>
