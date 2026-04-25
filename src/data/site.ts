@@ -44,6 +44,8 @@ export const site = {
   heroSecondaryCTA: "View Services",
   servicesDescription: "Strategic technology leadership for companies at critical inflection points.",
   expertiseTitle: "Deep Expertise, Proven Results",
+  credentialsTitle: "Certifications & Education",
+  achievementsTitle: "Track Record",
   recentTraining: [
     "AI Strategy & Governance - Ongoing education in enterprise AI implementation",
     "Prompt Engineering & LLM Best Practices - Continuous learning in AI technologies",

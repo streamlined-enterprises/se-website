@@ -3,30 +3,31 @@
 import { site } from '../data/site.ts';
 ---
 
-<section id="expertise" class="py-20 md:py-32 bg-slate-900/20">
+<section id="expertise" class="py-20 md:py-32 bg-neutral-900/20">
   <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
     <!-- Section Header -->
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-100 mb-12">
-      Deep Expertise, Proven Results
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-100 mb-12">
+      {site.expertiseTitle}
     </h2>
     
     <!-- Credentials Grid -->
     <div class="grid md:grid-cols-2 gap-8 text-left">
       <!-- Left Card: Certifications & Education -->
-      <div class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8">
-        <h3 class="text-xl font-semibold text-slate-100 mb-6 flex items-center gap-3">
-          <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <div class="backdrop-blur-md bg-neutral-900/50 border border-neutral-800 rounded-xl p-8">
+        <h3 class="text-xl font-semibold text-neutral-100 mb-6 flex items-center gap-3">
+          <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
           </svg>
-          Certifications & Education
+          {site.credentialsTitle}
         </h3>
         
         <!-- Certifications -->
         <div class="mb-6">
-          <h4 class="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wide">Professional Certifications</h4>
+          <!-- UI chrome — not brand-specific -->
+          <h4 class="text-sm font-medium text-neutral-400 mb-3 uppercase tracking-wide">Professional Certifications</h4>
           <div class="flex flex-wrap gap-2">
             {site.certs.map(cert => (
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20">
                 {cert}
               </span>
             ))}
@@ -35,45 +36,43 @@ import { site } from '../data/site.ts';
         
         <!-- Recent Training -->
         <div class="mb-6">
-          <h4 class="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wide">Recent Training</h4>
-          <ul class="space-y-2 text-slate-300">
-            <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-              <span>AI Strategy & Governance - Ongoing education in enterprise AI implementation</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-              <span>Prompt Engineering & LLM Best Practices - Continuous learning in AI technologies</span>
-            </li>
+          <!-- UI chrome — not brand-specific -->
+          <h4 class="text-sm font-medium text-neutral-400 mb-3 uppercase tracking-wide">Recent Training</h4>
+          <ul class="space-y-2 text-neutral-300">
+            {site.recentTraining.map(item => (
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
           </ul>
         </div>
         
         <!-- Education -->
         <div>
-          <h4 class="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wide">Technical Foundation</h4>
-          <p class="text-slate-300">
-            Strong engineering backgrounds across the team with degrees in Computer Science and Engineering
+          <!-- UI chrome — not brand-specific -->
+          <h4 class="text-sm font-medium text-neutral-400 mb-3 uppercase tracking-wide">Technical Foundation</h4>
+          <p class="text-neutral-300">
+            {site.technicalFoundation}
           </p>
         </div>
       </div>
       
       <!-- Right Card: Track Record -->
-      <div class="backdrop-blur-md bg-slate-900/50 border border-slate-800 rounded-xl p-8">
-        <h3 class="text-xl font-semibold text-slate-100 mb-6 flex items-center gap-3">
-          <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <div class="backdrop-blur-md bg-neutral-900/50 border border-neutral-800 rounded-xl p-8">
+        <h3 class="text-xl font-semibold text-neutral-100 mb-6 flex items-center gap-3">
+          <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
-          Track Record
+          {site.achievementsTitle}
         </h3>
         
-        <ul class="space-y-4 text-slate-300">
+        <ul class="space-y-4 text-neutral-300">
           {site.trackRecord.map(item => (
             <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-teal-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               <span>{item}</span>
@@ -84,12 +83,12 @@ import { site } from '../data/site.ts';
     </div>
     
     <!-- Additional Credibility -->
-    <div class="mt-12 backdrop-blur-sm bg-slate-900/30 border border-slate-800 rounded-lg p-6 text-left">
+    <div class="mt-12 backdrop-blur-sm bg-neutral-900/30 border border-neutral-800 rounded-lg p-6 text-left">
       <div class="grid md:grid-cols-3 gap-6">
         {site.credibility.map(item => (
           <div>
-            <h4 class="text-sm font-medium text-teal-400 mb-2 uppercase tracking-wide">{item.heading}</h4>
-            <p class="text-slate-300 text-sm">
+            <h4 class="text-sm font-medium text-primary-400 mb-2 uppercase tracking-wide">{item.heading}</h4>
+            <p class="text-neutral-300 text-sm">
               {item.body}
             </p>
           </div>

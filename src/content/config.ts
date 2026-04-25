@@ -5,7 +5,7 @@ const services = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    icon: z.enum(['ai', 'shield', 'cloud', 'fractional', 'assessment']),
+    icon: z.string().default('default'),
     featured: z.boolean().default(false),
     order: z.number(),
   }),
