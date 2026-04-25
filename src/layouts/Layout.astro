@@ -99,12 +99,12 @@ const structuredData = {
       }
     </style>
   </head>
-  <body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
+  <body class="bg-surface text-content-base font-sans antialiased">
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Radial gradient background overlay -->
-    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-neutral-950 pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-subtle via-surface to-surface pointer-events-none z-0"></div>
     
     <!-- Main content -->
     <main id="main-content" class="relative z-10">
@@ -122,31 +122,31 @@ const structuredData = {
   }
   
   ::-webkit-scrollbar-track {
-    /* Sync with neutral-950: #020617 */
+    /* Sync with surface token */
     background: #020617;
   }
   
   ::-webkit-scrollbar-thumb {
-    /* Sync with neutral-700: #334155 */
+    /* Sync with border-subtle token */
     background: #334155;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    /* Sync with neutral-600: #475569 */
+    /* Sync with slightly lighter border color */
     background: #475569;
   }
   
   /* Selection color */
   ::selection {
-    /* Sync with primary-500: #14B8A6 */
+    /* Sync with primary token */
     background: #14B8A6;
     color: #020617;
   }
   
   /* Focus visible styles */
   :focus-visible {
-    /* Sync with primary-500: #14B8A6 */
+    /* Sync with primary token */
     outline: 2px solid #14B8A6;
     outline-offset: 2px;
   }
