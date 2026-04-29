@@ -12,6 +12,8 @@ export default {
       colors: {
         // Base palette — static lookup for Tailwind purge-safe color resolution
         primary: {
+          // DEFAULT added so bare text-primary / hover:text-primary resolve
+          DEFAULT: colors[theme.primaryColor][500],
           400: colors[theme.primaryColor][400],
           500: colors[theme.primaryColor][500],
           600: colors[theme.primaryColor][600],
