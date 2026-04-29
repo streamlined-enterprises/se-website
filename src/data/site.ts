@@ -1,7 +1,11 @@
 // filepath: src/data/site.ts
+
+// Extracted so heroEyebrow can reference it without duplication.
+const legalName = "Streamlined Enterprises LLC" as const;
+
 export const site = {
   name: "Streamline IT",
-  legalName: "Streamlined Enterprises LLC",
+  legalName,
   tagline: "Enterprise Technology Leadership",
   taglineSub: "When the Stakes are High",
   description: "Strategic consulting for enterprises and growth-stage companies. 22+ years expertise in secure AI adoption, risk-based security, and reliable cloud platforms. Zero-breach track record.",
@@ -37,7 +41,8 @@ export const site = {
   ],
   copyright: new Date().getFullYear(),
 
-  heroEyebrow: "Streamlined Enterprises LLC",
+  // heroEyebrow references legalName — update legalName above to change both.
+  heroEyebrow: legalName,
   heroCopy: "Strategic AI guidance, battle-tested security, and proven infrastructure leadership. We help companies move fast without breaking compliance.",
   heroPrimaryCTA: "Schedule a Consultation",
   heroSecondaryCTA: "View Services",
@@ -52,7 +57,8 @@ export const site = {
   technicalFoundation: "Strong engineering backgrounds across the team with degrees in Computer Science and Engineering",
   contactTitle: "Book a Strategy Call",
   contactDescription: "30 minutes. No pitch, just an honest look at where your stack stands and where it needs to go.",
-  calLink: "https://cal.com/ty-stackhouse",
+  // Bare Cal.com slug — do not include the full https://cal.com/ URL prefix.
+  calLink: "ty-stackhouse/30min",
   companyType: "Enterprise Technology Consulting",
   ogImage: "https://streamline.it.com/og-image.jpg",
 } as const;

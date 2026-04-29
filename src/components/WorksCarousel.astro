@@ -10,7 +10,7 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="flex items-end justify-between mb-8">
       <h2 class="text-3xl md:text-4xl font-bold text-content-base">Featured Work</h2>
-      <p class="text-content-muted text-sm hidden md:block">Scroll to explore →</p>
+      <p class="text-content-muted text-sm hidden md:block">Scroll to explore</p>
     </div>
 
     <!-- Scroll container -->
@@ -39,7 +39,7 @@ const works = (await getCollection('works')).sort((a, b) => a.data.order - b.dat
               </svg>
             </div>
           )}
-          <div class="p-5">
+          <div class="p5">
             <h3 class="text-content-base font-semibold mb-1 group-hover:text-primary-400 transition-colors">{work.data.title}</h3>
             <p class="text-content-muted text-sm leading-relaxed">{work.data.description}</p>
             {work.data.tags.length > 0 && (

@@ -9,7 +9,8 @@ import { theme } from '../data/theme.ts';
     <div class="max-w-7xl mx-auto px-4 md:px-6 h-full">
       <div class="flex items-center justify-between h-full">
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label={`${site.name} — home`}>
+        <!-- aria-label uses a plain hyphen — no em dash -->
+        <a href="#" class="flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label={`${site.name} home`}>
           <span class="text-primary-500">
             <Fragment set:html={theme.logoSVG} />
           </span>
@@ -19,7 +20,7 @@ import { theme } from '../data/theme.ts';
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
           {site.nav.map(item => (
-            <a href={item.href} class="text-content-muted hover:text-primary transition-colors text-sm font-medium">
+            <a href={item.href} class="text-content-muted hover:text-primary-400 transition-colors text-sm font-medium">
               {item.label}
             </a>
           ))}
@@ -29,7 +30,7 @@ import { theme } from '../data/theme.ts';
         <button
           id="mobile-menu-toggle"
           type="button"
-          class="md:hidden p-2 text-content-muted hover:text-primary transition-colors"
+          class="md:hidden p-2 text-content-muted hover:text-primary-400 transition-colors"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
         >
@@ -49,14 +50,14 @@ import { theme } from '../data/theme.ts';
   >
     <div class="flex flex-col items-center justify-center h-full gap-8">
       {site.nav.map(item => (
-        <a href={item.href} class="text-2xl text-content-muted hover:text-primary transition-colors mobile-nav-link">
+        <a href={item.href} class="text-2xl text-content-muted hover:text-primary-400 transition-colors mobile-nav-link">
           {item.label}
         </a>
       ))}
       <button
         id="mobile-menu-close"
         type="button"
-        class="absolute top-4 right-4 p-2 text-content-muted hover:text-primary transition-colors"
+        class="absolute top-4 right-4 p-2 text-content-muted hover:text-primary-400 transition-colors"
         aria-label="Close mobile menu"
       >
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -109,10 +110,10 @@ import { theme } from '../data/theme.ts';
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');
         navLinks.forEach(link => {
-          link.classList.remove('text-primary');
+          link.classList.remove('text-primary-500');
           link.classList.add('text-content-muted');
           if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('text-primary');
+            link.classList.add('text-primary-500');
             link.classList.remove('text-content-muted');
           }
         });

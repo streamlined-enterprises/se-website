@@ -24,28 +24,60 @@ import Footer from '../components/Footer.astro';
   <Footer />
 </Layout>
 
+<style>
+  /*
+   * Scroll animation classes.
+   * scroll-hidden is applied only to sections below the initial viewport
+   * so above-fold sections (Hero, TrustBar) are never invisible on load.
+   */
+  .scroll-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hidden {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
 <script>
-  // Scroll-triggered animations using Intersection Observer
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade-in', 'animate-slide-up');
-        observer.unobserve(entry.target);
+  if (!prefersReducedMotion) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('scroll-hidden');
+          entry.target.classList.add('scroll-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Only add scroll-hidden to sections that start below the visible viewport.
+    // This prevents Hero and TrustBar from flashing invisible on page load.
+    document.querySelectorAll('section').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top > window.innerHeight) {
+        section.classList.add('scroll-hidden');
       }
+      observer.observe(section);
     });
-  }, observerOptions);
-
-  // Observe all sections for scroll animations
-  document.querySelectorAll('section').forEach(section => {
-    section.classList.add('opacity-0');
-    observer.observe(section);
-  });
+  }
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
