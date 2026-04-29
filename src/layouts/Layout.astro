@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site.ts';
 import { theme } from '../data/theme.ts';
+import '../styles/global.css';
 
 interface Props {
   title?: string;
@@ -110,8 +111,6 @@ const structuredData = {
     <main id="main-content" class="relative z-10">
       <slot />
     </main>
-    
-    <!-- Footer is included in the page -->
   </body>
 </html>
 
@@ -122,31 +121,24 @@ const structuredData = {
   }
   
   ::-webkit-scrollbar-track {
-    /* Sync with surface token */
     background: theme('colors.neutral.950');
   }
   
   ::-webkit-scrollbar-thumb {
-    /* Sync with border-subtle token */
     background: theme('colors.neutral.700');
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    /* Sync with slightly lighter border color */
     background: theme('colors.neutral.600');
   }
   
-  /* Selection color */
   ::selection {
-    /* Sync with primary token */
     background: theme('colors.primary.500');
     color: theme('colors.neutral.950');
   }
   
-  /* Focus visible styles */
   :focus-visible {
-    /* Sync with primary token */
     outline: 2px solid theme('colors.primary.500');
     outline-offset: 2px;
   }
