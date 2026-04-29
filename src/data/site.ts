@@ -26,7 +26,7 @@ export const site = {
     { value: "Zero", label: "Breach Record", icon: "shield" },
     { value: "Fortune 500", label: "Trusted Partner", icon: "building" },
   ],
-  certs: ["CISSP", "CISA", "CISM", "CCSP"],
+  certs: ["AIGP", "CISSP", "CISA", "CISM", "CCSP"],
   trackRecord: [
     "Two decades of continuous accountability in FinTech/SaaS infrastructure",
     "Scaled operations from startup through two Fortune 500 acquisitions (Heartland Payment Systems 2014, Global Payments 2016)",
@@ -60,5 +60,5 @@ export const site = {
   // Bare Cal.com slug — do not include the full https://cal.com/ URL prefix.
   calLink: "ty-stackhouse/30min",
   companyType: "Enterprise Technology Consulting",
-  ogImage: "https://streamline.it.com/og-image.jpg",
+  ogImage: "https://streamline.it.com/og-image.png",
 } as const;
