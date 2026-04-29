@@ -1,4 +1,4 @@
-import colors from 'tailwindcss/colors';
+import colors from 'tailwindcss/colors.js';
 import { theme } from './src/data/theme.ts';
 
 /** @type {import('tailwindcss').Config} */
