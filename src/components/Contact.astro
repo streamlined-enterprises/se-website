@@ -20,7 +20,7 @@ import { site } from '../data/site.ts';
       <div 
         id="cal-embed" 
         data-cal-link={site.calLink}
-        style="width:100%;height:100%;overflow:scroll;min-height:600px;"
+        style="width:100%;min-height:600px;"
       ></div>
       
       <script>
@@ -46,33 +46,33 @@ import { site } from '../data/site.ts';
                 p(cal, ["-", namespace, api]);
               } else {
                 p(cal, ar);
-                p(cal, ["-", ar, api]);
+                p(cal, ["-", ar[1], api]);
               }
               return;
             }
             p(cal, ar);
           };
         })(window, "https://app.cal.com/embed/embed.js", "init");
-        
+
         Cal("init", { origin: "https://cal.com" });
-      </script>
-      
-      <script>
+
         const calEmbed = document.getElementById('cal-embed');
-        const calLink = calEmbed?.dataset.calLink;
-        
+        const calLink = calEmbed && calEmbed.dataset.calLink;
+
         if (calLink) {
           Cal("inline", {
             elementOrSelector: "#cal-embed",
             calLink: calLink,
-            layout: "month_view"
+            layout: "month"
           });
-          
+
           Cal("ui", {
             theme: "dark",
-            styles: { branding: { brandColor: "#14b8a6" } },
+            cssVarsPerTheme: {
+              dark: { "cal-brand": "#14b8a6" }
+            },
             hideEventTypeDetails: false,
-            layout: "month_view"
+            layout: "month"
           });
         }
       </script>
