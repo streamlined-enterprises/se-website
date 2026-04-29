@@ -10,14 +10,14 @@ export default {
         sans: [theme.fontFamily, 'Geist', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       colors: {
-        // Semantic tokens — static lookup for Tailwind purge-safe color resolution
+        // Base palette — static lookup for Tailwind purge-safe color resolution
         primary: {
           400: colors[theme.primaryColor][400],
           500: colors[theme.primaryColor][500],
           600: colors[theme.primaryColor][600],
         },
         neutral: {
-          50: colors[theme.neutralColor][50],
+          50:  colors[theme.neutralColor][50],
           100: colors[theme.neutralColor][100],
           200: colors[theme.neutralColor][200],
           300: colors[theme.neutralColor][300],
@@ -28,6 +28,23 @@ export default {
           800: colors[theme.neutralColor][800],
           900: colors[theme.neutralColor][900],
           950: colors[theme.neutralColor][950],
+        },
+        // Semantic surface tokens
+        surface: {
+          DEFAULT: colors[theme.neutralColor][950],
+          subtle:  colors[theme.neutralColor][900],
+        },
+        // Semantic content (text) tokens
+        content: {
+          base:    colors[theme.neutralColor][100],
+          muted:   colors[theme.neutralColor][400],
+          faint:   colors[theme.neutralColor][600],
+          inverse: colors[theme.neutralColor][950],
+        },
+        // Semantic border tokens
+        border: {
+          subtle:  colors[theme.neutralColor][800],
+          DEFAULT: colors[theme.neutralColor][700],
         },
       },
       borderRadius: {
