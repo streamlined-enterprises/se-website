@@ -14,15 +14,15 @@ import { site } from '../data/site.ts';
         {site.contactDescription}
       </p>
     </div>
-    
+
     {site.calLink ? (
       <!-- Cal.com Inline Embed -->
-      <div 
-        id="cal-embed" 
+      <div
+        id="cal-embed"
         data-cal-link={site.calLink}
         style="width:100%;min-height:600px;"
       ></div>
-      
+
       <script>
         (function (C, A, L) {
           let p = function (a, ar) { a.q.push(ar); };
@@ -54,25 +54,25 @@ import { site } from '../data/site.ts';
           };
         })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        Cal("init", { origin: "https://cal.com" });
+        // Use namespaced API — required for inline embed
+        Cal("init", "booking", { origin: "https://cal.com" });
 
-        const calEmbed = document.getElementById('cal-embed');
+        const calEmbed = document.getElementById("cal-embed");
         const calLink = calEmbed && calEmbed.dataset.calLink;
 
         if (calLink) {
-          Cal("inline", {
+          Cal.ns["booking"]("inline", {
             elementOrSelector: "#cal-embed",
             calLink: calLink,
-            layout: "month"
+            config: { layout: "month_view" }
           });
 
-          Cal("ui", {
+          Cal.ns["booking"]("ui", {
             theme: "dark",
             cssVarsPerTheme: {
               dark: { "cal-brand": "#14b8a6" }
             },
-            hideEventTypeDetails: false,
-            layout: "month"
+            hideEventTypeDetails: false
           });
         }
       </script>
@@ -80,8 +80,8 @@ import { site } from '../data/site.ts';
       <!-- Fallback Placeholder -->
       <div class="backdrop-blur-md bg-surface/50 border border-border-subtle rounded-brand p-12 text-center">
         <p class="text-content-muted mb-4">Online booking coming soon.</p>
-        <a 
-          href={`mailto:${site.email}`} 
+        <a
+          href={`mailto:${site.email}`}
           class="text-primary-400 hover:text-primary-500 transition-colors underline underline-offset-4"
         >
           {site.email}
