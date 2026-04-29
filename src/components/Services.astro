@@ -1,6 +1,7 @@
 ---
 // Services Section Component
 import { getCollection } from 'astro:content';
+import { site } from '../data/site.ts';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const featuredServices = services.filter(s => s.data.featured);
