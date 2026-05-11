@@ -19,22 +19,32 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": site.legalName,
-  "description": "Secure AI, cloud, and engineering consulting specializing in AI enablement under compliance constraints.",
+  "description": site.description,
   "url": site.canonicalURL,
   "priceRange": "$$$",
+  "email": site.email,
   "areaServed": {
     "@type": "Place",
     "name": "United States"
   },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kansas City",
+    "addressRegion": "MO",
+    "addressCountry": "US"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
-    "contactType": "technical support",
+    "contactType": "sales",
+    "email": site.email,
     "availableLanguage": "English"
   },
   "founder": {
     "@type": "Person",
-    "jobTitle": "Lead AI & Security Strategist"
-  }
+    "name": "Ty Stackhouse",
+    "jobTitle": "Founder & Lead AI Security Strategist"
+  },
+  "knowsAbout": ["AI Governance", "Cybersecurity", "Cloud Infrastructure", "PCI Compliance", "SOC Audits", "Fractional CTO"]
 };
 ---
 
@@ -50,7 +60,7 @@ const structuredData = {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="keywords" content="AI strategy, security consulting, cloud infrastructure, FinTech, PCI compliance, SOC audit, CTO services, enterprise technology, digital transformation" />
-    <meta name="author" content="Streamlined Enterprises LLC" />
+    <meta name="author" content={site.legalName} />
     <meta name="robots" content="index, follow" />
     
     <!-- Canonical URL -->
@@ -84,15 +94,25 @@ const structuredData = {
     
     <!-- Skip to main content for accessibility -->
     <style>
+      /*
+       * NOTE: theme() CSS-in-JS calls do NOT work inside Astro <style> blocks —
+       * they are processed by a separate Vite pipeline. Use raw hex or CSS
+       * custom properties here. Values below match:
+       *   primary-500  = teal-500  = #14b8a6
+       *   neutral-950  = slate-950 = #020617
+       */
       .skip-link {
         position: absolute;
         top: -40px;
         left: 0;
-        background: theme('colors.primary.500');
-        color: theme('colors.neutral.950');
+        background: #14b8a6;
+        color: #020617;
         padding: 8px 16px;
         z-index: 100;
         transition: top 0.3s;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0 0 4px 0;
       }
       .skip-link:focus {
         top: 0;
@@ -104,7 +124,7 @@ const structuredData = {
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Radial gradient background overlay -->
-    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-subtle via-surface to-surface pointer-events-none z-0"></div>
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-subtle via-surface to-surface pointer-events-none z-0" aria-hidden="true"></div>
     
     <!-- Main content -->
     <main id="main-content" class="relative z-10">
@@ -114,31 +134,60 @@ const structuredData = {
 </html>
 
 <style is:global>
+  /*
+   * NOTE: theme() does not work in is:global Astro style blocks for the same
+   * reason as above. Raw hex values used. Tailwind utility classes in templates
+   * are unaffected.
+   */
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    background: theme('colors.neutral.950');
+    background: #020617; /* slate-950 */
   }
   
   ::-webkit-scrollbar-thumb {
-    background: theme('colors.neutral.700');
+    background: #334155; /* slate-700 */
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.neutral.600');
+    background: #475569; /* slate-600 */
   }
   
   ::selection {
-    background: theme('colors.primary.500');
-    color: theme('colors.neutral.950');
+    background: #14b8a6; /* teal-500 */
+    color: #020617;      /* slate-950 */
   }
   
   :focus-visible {
-    outline: 2px solid theme('colors.primary.500');
+    outline: 2px solid #14b8a6; /* teal-500 */
     outline-offset: 2px;
+  }
+
+  /* Scroll-reveal animation — applied by IntersectionObserver in index.astro.
+     Excluded from #hero (above fold) and #contact (Cal embed needs a visible
+     container at init time or it renders at zero dimensions). */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-animate,
+    .scroll-animate.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
