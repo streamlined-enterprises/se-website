@@ -11,12 +11,14 @@ const services = defineCollection({
   }),
 });
 
+// works collection is defined but intentionally empty until case studies are ready.
+// WorksCarousel renders nothing when the collection is empty.
 const works = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/works' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),
+    image: z.string().optional(),
     url: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     order: z.number(),

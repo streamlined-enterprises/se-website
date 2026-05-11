@@ -12,8 +12,7 @@ export default {
       colors: {
         // Base palette — static lookup for Tailwind purge-safe color resolution
         primary: {
-          // DEFAULT added so bare text-primary / hover:text-primary resolve
-          DEFAULT: colors[theme.primaryColor][500],
+          DEFAULT: colors[theme.primaryColor][500], // enables text-primary, bg-primary etc.
           400: colors[theme.primaryColor][400],
           500: colors[theme.primaryColor][500],
           600: colors[theme.primaryColor][600],
@@ -53,22 +52,22 @@ export default {
         brand: theme.borderRadius === 'sharp' ? '0px' : theme.borderRadius === 'soft' ? '0.75rem' : '9999px',
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out forwards',
-        'slide-up': 'slideUp 0.6s ease-out forwards',
+        'fade-in':       'fadeIn 0.6s ease-out forwards',
+        'slide-up':      'slideUp 0.6s ease-out forwards',
         'bounce-subtle': 'bounceSubtle 2s infinite',
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0' },
+          '0%':   { opacity: '0' },
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '0%':   { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         bounceSubtle: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%':      { transform: 'translateY(-10px)' },
         },
       },
     },
