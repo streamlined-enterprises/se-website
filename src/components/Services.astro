@@ -1,11 +1,21 @@
 ---
 // Services Section Component
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { site } from '../data/site.ts';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
-const featuredServices = services.filter(s => s.data.featured);
-const secondaryServices = services.filter(s => !s.data.featured);
+const allServices = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+
+// Render Markdown bodies at build time via Astro's content render API.
+// This replaces the stub renderMarkdown() that returned raw markdown strings.
+const withContent = await Promise.all(
+  allServices.map(async (service) => {
+    const { Content } = await render(service);
+    return { service, Content };
+  })
+);
+
+const featuredWithContent  = withContent.filter(({ service }) => service.data.featured);
+const secondaryWithContent = withContent.filter(({ service }) => !service.data.featured);
 
 const iconMap: Record<string, string> = {
   ai: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
@@ -15,10 +25,6 @@ const iconMap: Record<string, string> = {
   assessment: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
   default: "M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm6 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 11a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm6 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z",
 };
-
-function renderMarkdown(content: string): string {
-  return content;
-}
 ---
 
 <section id="services" class="py-20 md:py-32">
@@ -34,29 +40,29 @@ function renderMarkdown(content: string): string {
     </div>
     
     <!-- Featured Services: Asymmetric Layout -->
-    {featuredServices.length > 0 && (
+    {featuredWithContent.length > 0 && (
       <>
         {/* First featured card: full-width */}
         <div class="grid gap-6 mb-6">
           <article class="group backdrop-blur-md bg-surface/50 border border-border-subtle rounded-brand p-8 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-1">
             <div class="mb-6">
               <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[featuredServices[0].data.icon] ?? iconMap['default']} />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[featuredWithContent[0].service.data.icon] ?? iconMap['default']} />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-content-base mb-3 group-hover:text-primary-400 transition-colors">
-              {featuredServices[0].data.title}
+              {featuredWithContent[0].service.data.title}
             </h3>
-            <p class="text-content-muted leading-relaxed">
-              {renderMarkdown(featuredServices[0].body)}
-            </p>
+            <div class="text-content-muted leading-relaxed prose prose-invert prose-sm max-w-none">
+              <featuredWithContent[0].Content />
+            </div>
           </article>
         </div>
         
-        {/* Remaining 2 featured cards: side-by-side */}
-        {featuredServices.length > 1 && (
+        {/* Remaining featured cards: side-by-side */}
+        {featuredWithContent.length > 1 && (
           <div class="grid md:grid-cols-2 gap-6 mb-16">
-            {featuredServices.slice(1).map(service => (
+            {featuredWithContent.slice(1).map(({ service, Content }) => (
               <article class="group backdrop-blur-md bg-surface/50 border border-border-subtle rounded-brand p-8 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-1">
                 <div class="mb-6">
                   <svg class="w-8 h-8 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -66,9 +72,9 @@ function renderMarkdown(content: string): string {
                 <h3 class="text-xl font-semibold text-content-base mb-3 group-hover:text-primary-400 transition-colors">
                   {service.data.title}
                 </h3>
-                <p class="text-content-muted leading-relaxed">
-                  {renderMarkdown(service.body)}
-                </p>
+                <div class="text-content-muted leading-relaxed prose prose-invert prose-sm max-w-none">
+                  <Content />
+                </div>
               </article>
             ))}
           </div>
@@ -77,16 +83,16 @@ function renderMarkdown(content: string): string {
     )}
     
     <!-- Secondary Services: 2-col grid -->
-    {secondaryServices.length > 0 && (
+    {secondaryWithContent.length > 0 && (
       <div class="grid md:grid-cols-2 gap-6">
-        {secondaryServices.map(service => (
+        {secondaryWithContent.map(({ service, Content }) => (
           <article class="backdrop-blur-sm bg-surface/30 border border-border-subtle rounded-brand p-6 hover:border-primary-500/30 transition-all duration-300">
             <h3 class="text-lg font-semibold text-content-base mb-2">
               {service.data.title}
             </h3>
-            <p class="text-content-muted">
-              {renderMarkdown(service.body)}
-            </p>
+            <div class="text-content-muted prose prose-invert prose-sm max-w-none">
+              <Content />
+            </div>
           </article>
         ))}
       </div>
