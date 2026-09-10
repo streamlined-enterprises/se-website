@@ -22,7 +22,7 @@ export const site = {
     { label: "Contact", href: "#contact" },
   ],
   trustStats: [
-    { value: "20+", label: "Years Experience", icon: "clock" },
+    { value: "22+", label: "Years Experience", icon: "clock" },
     { value: "Zero", label: "Breach Record", icon: "shield" },
     { value: "Fortune 500", label: "Trusted Partner", icon: "building" },
   ],
